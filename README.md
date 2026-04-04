@@ -49,6 +49,15 @@ This script will:
 * Generate a gateway token and store it in .env
 ---
 
+### 4) Upgrade OpenClaw
+When a new version is released, pull the latest image and restart the service:
+```
+docker pull alpine/openclaw:latest
+docker-compose down
+docker-compose up -d
+```
+No worried, the configuration file ( `~/.openclaw/openclaw.json`) will not be affected. However, it’s good practice to back it up and store it in a safe location before upgrading.
+
 ## Onboarding screenshots (for beginners)
 
 You can use the onboarding screenshots from this blog post:
