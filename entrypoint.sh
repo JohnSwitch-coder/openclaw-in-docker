@@ -1,19 +1,19 @@
 #!/bin/sh
 set -eu
 
-ORIGIN="${OPENCLAW_CONTROL_UI_ORIGIN:-https://web-terminal-latest-8a0n.onrender.com}"
+ORIGIN="${OPENCLAW_CONTROL_UI_ORIGIN:-https://openclaw-in-docker.onrender.com}"
 PORT="${OPENCLAW_GATEWAY_PORT:-18789}"
+TOKEN="${OPENCLAW_GATEWAY_TOKEN:?OPENCLAW_GATEWAY_TOKEN is required}"
 
 echo "==> Configuring OpenClaw"
 echo "    Allowed origin: ${ORIGIN}"
 echo "    Gateway port:   ${PORT}"
 
-# Set gateway mode first
 openclaw config set gateway.mode local
-
-# Set Control UI allowed origin
+openclaw config set gateway.auth.mode token
+openclaw config set gateway.auth.token "${TOKEN}"
 openclaw config set gateway.controlUi.allowedOrigins "[\"${ORIGIN}\"]"
 
 echo "==> Starting OpenClaw Gateway"
 
-exec openclaw gateway --bind lan --port "${PORT}"
+exec openclaw gateway --bind 0.0.0.0 --port "${PORT}"
