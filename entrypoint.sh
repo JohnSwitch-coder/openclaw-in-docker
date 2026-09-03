@@ -3,7 +3,7 @@ set -eu
 
 ORIGIN="${OPENCLAW_CONTROL_UI_ORIGIN:-https://openclaw-in-docker.onrender.com}"
 PORT="${OPENCLAW_GATEWAY_PORT:-18789}"
-TOKEN="${OPENCLAW_GATEWAY_TOKEN:?OPENCLAW_GATEWAY_TOKEN is required}"
+TOKEN="${OPENCLAW_GATEWAY_TOKEN: -12345678}"
 
 echo "==> Configuring OpenClaw"
 echo "    Allowed origin: ${ORIGIN}"
