@@ -13,6 +13,7 @@ openclaw config set gateway.mode local
 openclaw config set gateway.auth.mode token
 openclaw config set gateway.auth.token "${TOKEN}"
 openclaw config set gateway.controlUi.allowedOrigins '["'${ORIGIN}'"]'
+openclaw config set gateway.trustedProxies '["*"]'
 
 echo "==> Starting OpenClaw Gateway"
 
